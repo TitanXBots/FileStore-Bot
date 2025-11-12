@@ -11,19 +11,19 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7701286571:AAHmZpW5TDrJSF61bWQ_GT0oE5zzjH86EKo")
 
 #Your API ID from my.telegram.org
-APP_ID = int(os.environ.get("APP_ID", ""))
+APP_ID = int(os.environ.get("APP_ID", "12293838"))
 
 #Your API Hash from my.telegram.org
-API_HASH = os.environ.get("API_HASH", "")
+API_HASH = os.environ.get("API_HASH", "cf8c7db0d609148786e7ca5c706909bd")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002096962621"))
 
 #OWNER ID
-OWNER_ID = int(os.environ.get("OWNER_ID", ""))
+OWNER_ID = int(os.environ.get("OWNER_ID", "5356695781"))
 
 #Port
 PORT = os.environ.get("PORT", "8080")
@@ -33,14 +33,14 @@ FILE_AUTO_DELETE = int(os.environ.get("FILE_AUTO_DELETE", "45")) # auto delete i
 
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://TITANXBOTS:TITANXBOTS@cluster0.vzglbom.mongodb.net/?retryWrites=true&w=majority")
 DB_NAME = os.environ.get("DATABASE_NAME", "Titanxbot") # Don't Change Database Name
 
 #force sub channel id, if you want to enable force sub (Use different ForceSub Channel ID)
-FORCE_SUB_CHANNEL_1 = int(os.environ.get("FORCE_SUB_CHANNEL_1", ""))
-FORCE_SUB_CHANNEL_2 = int(os.environ.get("FORCE_SUB_CHANNEL_2", ""))
-FORCE_SUB_CHANNEL_3 = int(os.environ.get("FORCE_SUB_CHANNEL_3", ""))
-FORCE_SUB_CHANNEL_4 = int(os.environ.get("FORCE_SUB_CHANNEL_4", ""))
+FORCE_SUB_CHANNEL_1 = int(os.environ.get("FORCE_SUB_CHANNEL_1", "-1002038066716"))
+FORCE_SUB_CHANNEL_2 = int(os.environ.get("FORCE_SUB_CHANNEL_2", "-1001987271131"))
+FORCE_SUB_CHANNEL_3 = int(os.environ.get("FORCE_SUB_CHANNEL_3", "-1002071945738"))
+FORCE_SUB_CHANNEL_4 = int(os.environ.get("FORCE_SUB_CHANNEL_4", "-1001972961497"))
 
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
@@ -53,7 +53,7 @@ ABOUT_TXT = "<b>✯ Creator : <a href='https://t.me/TitanContactBot'>This Person
 START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link.")
 try:
     ADMINS=[]
-    for x in (os.environ.get("ADMINS", "").split()):
+    for x in (os.environ.get("ADMINS", "5356695781").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
