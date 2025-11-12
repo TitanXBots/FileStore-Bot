@@ -225,16 +225,18 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
 
 
 
-async def delete_files(messages, client, k):
+async def delete_files(messages, client, k, command_payload=None):
     await asyncio.sleep(FILE_AUTO_DELETE)  # Wait for the duration specified in config.py
+    
+    # Delete all messages first
     for msg in messages:
         try:
             await client.delete_messages(chat_id=msg.chat.id, message_ids=[msg.id])
         except Exception as e:
             print(f"The attempt to delete the media {msg.id} was unsuccessful: {e}")
 
-        # Safeguard against k.command being None or having insufficient parts
-    command_part = k.command[1] if k.command and len(k.command) > 1 else None
+    # Safeguard against k.command being None or having insufficient parts
+    command_part = command_payload
 
     if command_part:
         button_url = f"https://t.me/{client.username}?start={command_part}"
@@ -246,13 +248,11 @@ async def delete_files(messages, client, k):
     else:
         keyboard = None
 
-    # Edit message with the button
-        try:
-            await k.edit_text("Your Video / File Is Successfully Deleted ✅", reply_markup=keyboard)
-        except Exception as e:
-              logging.error(f"Error editing the message: {e}")
-        except Exception as e:
-              logging.error(f"An unexpected error occurred: {e}")
+    # Edit message with the button (outside the for loop)
+    try:
+        await k.edit_text("ʏᴏᴜʀ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ ɪꜱ ꜱᴜᴄᴇꜱꜱꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ✅\nɴᴏᴡ ᴄʟɪᴄᴋ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ᴅᴇʟᴇᴛᴇᴅ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ 👇", reply_markup=keyboard)
+    except Exception as e:
+        logging.error(f"Error editing the message: {e}")
             
 
 # Dont Remove Credit
